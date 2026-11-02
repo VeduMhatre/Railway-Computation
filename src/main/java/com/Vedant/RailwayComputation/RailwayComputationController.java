@@ -20,13 +20,29 @@ public class RailwayComputationController {
 
 	@PostMapping("/platformlength")
 	public String calculatePlatformLength(@RequestParam double speed, @RequestParam double trainlength, @RequestParam double time, @RequestParam String speedUnit, @RequestParam String timeUnit){
-		return service.calculateTrainLength(speed, trainlength, time, speedUnit, timeUnit);
+		return service.calculatePlatformLength(speed, trainlength, time, speedUnit, timeUnit);
 	}
 
 	@PostMapping("/relativespeed")
-	public String calculateRelativeSoeed(@RequestParam double speedtrain1, @RequestParam double speedtrain2, @RequestParam String direction, @RequestParam String speedUnit){
+	public String calculateRelativeSpeed(@RequestParam double speedtrain1, @RequestParam double speedtrain2, @RequestParam String direction, @RequestParam String speedUnit){
 		return service.calculateRelativeSpeed(speedtrain1, speedtrain2, direction, speedUnit);
 	}
 	
+	@PostMapping("/traincrossingtime")
+	public String calculateTrainCrossingTime(@RequestParam double trainlength1, @RequestParam double trainlength2, @RequestParam double speedtrain1, @RequestParam double speedtrain2, @RequestParam String direction, @RequestParam String speedUnit){
+		return service.calculateTrainCrossingTime(trainlength1, trainlength2, speedtrain1, speedtrain2, direction, speedUnit);
+	}
+
+	@PostMapping("/oppositetrainmeet")
+	public String calculateMeetingSpeedRatio(@RequestParam double time1AfterMeeting, @RequestParam double time2AfterMeeting){
+		return service.calculateMeetingSpeedRatio(time1AfterMeeting, time2AfterMeeting);
+	}
+
+
+	@PostMapping("/trainspeed")
+	public String calculateTrainSpeed(@RequestParam double trainLength, @RequestParam double time, @RequestParam double personSpeed, @RequestParam String speedUnit, @RequestParam String timeUnit, @RequestParam String direction){
+		return service.calculateTrainSpeed(trainLength, time, personSpeed, speedUnit, timeUnit, direction);
+	}
+
 
 }
